@@ -1,0 +1,488 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'itd105_app/img/logo.png' %}">
+  <title>sophia.</title>
+  
+  <link rel="stylesheet" href="{% static 'itd105_app/css/wine.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+  <!-- datatables -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Raleway:wght@400;500;600;700;800;900&family=Reem+Kufi+Fun:wght@400;500;600;700&display=swap');
+
+/* default format */
+:root{
+  --logo-font: 'Reem Kufi Fun', sans-serif;
+  --max-width: 1200px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb {
+  background: #000;
+  transition: all 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover { background: #fff; }
+
+html,
+body{
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+img{
+  width: 100%;
+  display: flex;
+}
+
+.text-center{ text-align: center; }
+
+.flex-column{ flex-direction: column; }
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container{
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* nav starts here */
+header{
+  background-image: linear-gradient(to bottom, rgba(189, 189, 189, 0.1), rgba(0, 0, 0, 0.9)), url("{% static 'itd105_app/img/1.jpg '%}");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #000;
+  height: 50vh;
+}
+
+nav{
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav_logo{ flex: 1; }
+.nav_logo a{
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: var(--logo-font);
+  text-decoration: none;
+  color: #000;
+}
+
+.nav_links{
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.link a{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  position: relative;
+  padding: 10px 0;
+  color: #000;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.link a::after{
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 0;
+  background-color: #000;
+  transition: all 0.3s;
+}
+.link a:hover::after{ width: 100%; }
+
+.nav_action{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+.nav_action a{
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hero_section{
+  padding: 10px;
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero_section .acc_details{
+  display: flex;
+  align-items: center;
+}
+
+.acc_details img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 1.5rem;
+}
+
+.acc_txt h3{ font-weight: bold; }
+.acc_txt h5{
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.links a{text-decoration: none; color: #000; }
+
+/* nav ends here */
+
+/* box starts here */
+
+.card_wrap{
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.col-6 .card{
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.card .info{
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.card .info i{
+  padding: 20px 30px;
+  color: #fff;
+  background: #56070c;
+  border-radius: 50%;
+  font-size: 3rem;
+}
+
+.card .details{
+  padding: 10px;
+}
+
+.card .details h1{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+}
+
+.card .details span{
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* box ends here */
+
+/* table starts here */
+
+.body_section{
+  margin-top: 4rem;
+  padding: 20px;
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+}
+
+.col-12{ 
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.table_wrap{
+  padding: 30px;
+  background: #fff;
+  border-radius:10px;
+}
+
+th,
+td{
+  font-size: 12px;
+}
+
+/* table ends here */
+
+  </style>
+
+
+</head>
+  
+<body>
+  
+  <!-- nav starts here -->
+    <header class="header">
+      <div class="container">
+        <nav>
+          <div class="nav_logo"><a href="">sophia.</a></div>
+  
+          <ul class="nav_links" id="nav_links">
+            <li class="link"><a href="#data">Data</a></li>
+            <li class="link"><a href="#reports">Reports</a></li>
+            <li class="link"><a href="{% url "wine_prediction" %}">Quality Test</a></li>
+          </ul>
+  
+          <div class="nav_action">
+            {% if user.is_authenticated %}
+              <a href="/signout"><i style="color:#000;" id="login-btn" class="fas fa-power-off"></i></a>
+            {% endif %}
+          </div>
+        </nav>
+      </div>
+
+      <div class="container">
+        <div class="hero_section">
+          <div class="acc_details">
+            <img src="{% static 'itd105_app/img/profile.jpg' %}">
+            <div class="acc_txt">
+              <h3>Wine Quality Dataset</h3>
+              <h5>Classification section</h5>
+            </div>
+          </div>
+          <div class="links">
+            <ol style="font-weight: bold; border:none; background: rgba(220, 229, 238, 0.5); padding: 10px 15px; border-radius: 50px;" class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{% url "category" %}">CATEGORY</a></li>
+              <li class="breadcrumb-item active">Classification</li>
+            </ol>
+        </div><!-- /.col -->
+        </div>
+      </div>
+
+
+      <div class="container">
+        <div class="card_wrap">
+          <div class="card">
+            <div class="info">
+              <div class="details">
+                <h1>{{ wine_data }}</h1>
+                <span>No. of Wines</span>
+              </div>
+              <div class="rank"></div>
+              <i class="fa-solid fa-wine-glass"></i>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="info">
+              <div class="details">
+                <h1>{{ good_wine }} <span>no.7-8</span></h1>
+                <span>Good Wines</span>
+              </div>
+              <div class="rank"></div>
+              <i style="padding:20px;" class="fa-solid fa-star"></i>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="info">
+              <div class="details">
+                <h1>{{ bad_wine }} <span>no.3-6</span></h1>
+                <span>Bad Wines</span>
+              </div>
+              <div class="rank"></div>
+              <i style="padding:20px;" class="fa-regular fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  <!-- nav ends here -->
+
+  <section id="reports" class="body_section">
+    <div style="width:1160px;" class="col-10">
+      <div style="border:none;" class="card">
+        <div  class="card-body">
+          <canvas id="qualChart" style="height: 450px; width: 100%;"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:1160px;" class="col-10">
+      <div style="border:none;" class="card">
+        <div  class="card-body">
+          <div class="row row-cols-2">
+            <div class="col">
+              <img style="width:400px; height:400px; margin:0 auto;" src="{% static 'itd105_app/img/charts/barplot_1.png' %}">
+            </div>
+            <div class="col">
+              <img style="width:400px; height:400px; margin:0 auto;" src="{% static 'itd105_app/img/charts/barplot_2.png' %}">
+            </div>
+            <div class="col">
+              <img style="width:400px; height:400px; margin:0 auto;" src="{% static 'itd105_app/img/charts/barplot_3.png' %}">
+            </div>
+            <div class="col">
+              <img style="width:400px; height:400px; margin:0 auto;" src="{% static 'itd105_app/img/charts/barplot_4.png' %}">
+            </div>
+            <div class="col">
+              <img style="width:400px; height:400px; margin:0 auto;" src="{% static 'itd105_app/img/charts/barplot_5.png' %}">
+            </div>
+            <div class="col">
+              <img style="width:400px; height:400px; margin:0 auto;" src="{% static 'itd105_app/img/charts/barplot_6.png' %}">
+            </div>
+            <div class="col">
+              <img style="width:400px; height:400px; margin:0 auto;" src="{% static 'itd105_app/img/charts/barplot_7.png' %}">
+            </div>
+            <div class="col">
+              <img style="width:400px; height:400px; margin:0 auto;" src="{% static 'itd105_app/img/charts/barplot_8.png' %}">
+            </div>
+            <div class="col">
+              <img style="width:400px; height:400px; margin:0 auto;" src="{% static 'itd105_app/img/charts/barplot_9.png' %}">
+            </div>
+            <div class="col">
+              <img style="width:400px; height:400px; margin:0 auto;" src="{% static 'itd105_app/img/charts/barplot_10.png' %}">
+            </div>
+            <div class="col">
+              <img style="width:400px; height:400px; margin:0 auto;" src="{% static 'itd105_app/img/charts/barplot_11.png' %}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:1160px;" class="col-10 mt-5">
+      <div style="border:none;" class="card">
+        <div style="border:none;" class="card-body">
+          <img style="width: 900px; height: 900px; margin:0 auto;" src="{% static 'itd105_app/img/charts/correlation_heatmap.png' %}">
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+  {% comment %} table starts here {% endcomment %}
+    <section id="data" class="body_section mt-2">
+      <div style="width:1160px;" class="col-10">
+        <div style="border:2px solid #56070c;" class="card">
+          <div style="background: #56070c; color: #fff; font-weight:600;" class="card-header">
+            <h5 class="card-title">
+              Wine Quality Data
+            </h5>
+          </div>
+            <div class="card-body">
+              <table id="example" class="text-center table table-hover" style="width:100%">
+                <thead>
+                  <tr>
+                      <th>fixed acidity</th>
+                      <th>volatile acidity</th>
+                      <th>citric acid</th>
+                      <th>residual sugar</th>
+                      <th>chlorides</th>
+                      <th>free sulfur dioxide</th>
+                      <th>total sulfur dioxide</th>
+                      <th>density</th>
+                      <th>pH</th>
+                      <th>sulphates</th>
+                      <th>alcohol</th>
+                      <th>quality</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for getdata in wine_report %}
+                  <tr>
+                      <td>{{ getdata.fixed_acidity }}</td>
+                      <td>{{ getdata.volatile_acidity }}</td>
+                      <td>{{ getdata.citric_acid }}</td>
+                      <td>{{ getdata.residual_sugar }}</td>
+                      <td>{{ getdata.chlorides }}</td>
+                      <td>{{ getdata.f_sulfur_dioxide }}</td>
+                      <td>{{ getdata.sulfur_dioxide }}</td>
+                      <td>{{ getdata.density }}</td>
+                      <td>{{ getdata.pH }}</td>
+                      <td>{{ getdata.sulphates }}</td>
+                      <td>{{ getdata.alcohol }}</td>
+                      <td>{{ getdata.quality }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>          
+          </div>
+        </div>
+        
+      </div>
+    </section>
+  {% comment %} table ends here {% endcomment %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+    <script src="{% static 'itd105_app/js/category.js' %}"></script>
+
+
+    <script>
+      var ctx = document.getElementById('qualChart').getContext('2d');
+      var qualChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: [{% for wine in wine_bins %} '{{ wine }}', {% endfor %}],
+              datasets: [{
+                  label: 'Wine Quality',
+                  data: [{% for num in wine_lists %} '{{ num }}', {% endfor %}],
+                  backgroundColor: 'rgba(57, 0, 2, 0.3)',
+                  borderColor: 'rgba(57, 0, 2, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+  </script>
+
+  </body>
+  </html>
+  

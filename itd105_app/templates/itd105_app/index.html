@@ -1,0 +1,243 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'itd105_app/img/logo.png' %}">
+  <title>sophia.</title>
+  <link rel="stylesheet" href="{% static 'itd105_app/css/index.css' %}"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+</head>
+<body>
+
+  <!-- nav starts here -->
+  <header class="header" id="home">
+    <nav>
+      <div class="nav_logo"><a href="#home">sophia.</a></div>
+
+      <ul class="nav_links" id="nav_links">
+        <li class="link"><a href="#about">About</a></li>
+        <li class="link"><a href="#datasets">Datasets</a></li>
+        <li class="link"><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav_menu_btn" id="menu_btn">
+        <span><i class="fas fa-bars-staggered"></i></span>
+      </div>
+
+      <div class="nav_action">
+        <span><i id="login-btn" class="fa-solid fa-user"></i></span>
+      </div>
+    </nav>
+
+    <div class="section_container header_container">
+      <h1>Let's analyze our datasets using ML models</h1>
+      <p>
+        Join me as we unlock a new era of dynamic, data-driven functionalities.
+        Let's transform our digital landscape with the limitless possibilities of
+        machine learning integration!
+      </p>
+      <a href="#about" class="about">Explore Now</a>
+    </div>
+
+    <!-- login starts here -->
+    <div class="login-container">
+
+      <div id="close-btn" class="fas fa-times"></div>
+
+      <form action="" method="post">
+        {% csrf_token %}
+        <h3>sign in</h3>
+
+        <p style="color:#900000; font-weight:bold; text-align:center">
+          {{ msg }}
+        </p>
+        
+        <span>username</span>
+        <input name=username class="box" type="text" placeholder="enter username">
+        <span>password</span>
+        <input name=password class="box" type="password" placeholder="enter password">
+
+        <a href="" class="login"> <input type="submit" value="sign in"> </a>
+      </form>
+    </div>
+    <!-- login ends here -->
+  </header>
+  <!-- nav ends here -->
+
+
+  <!-- about starts here -->
+  <section id="about" class="container flex-center flex-column">
+    <h5 class="section-subheader">what to expect?</h5>
+    <h2 class="section-header text-center"> Explore various aspects of machine learning (ML) models </h2>
+
+    <div class="features text-center">
+      <div class="feature">
+        <div class="feature_icon"><i class="fa-solid fa-diagram-project"></i></div>
+        <h3 class="feature_title">Exploratory Data Analysis (EDA)</h3>
+        <div style="font-size: 0.9rem; font-weight:500; text-align: justify;" class="feature_text">
+          This is the <strong>vital process or phase</strong> when dealing with the machine
+          learning process. EDA is the right tool to help you analyze and visualize your data
+          better; which enhances the performance of your chosen <strong>ML models</strong> as well.
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature_icon"><i style="color: #ffd700;" class="fas fa-chart-line"></i></div>
+        <h3 class="feature_title">Data Visualization</h3>
+        <div style="font-size: 0.9rem; font-weight:500; text-align: justify;" class="feature_text">
+          Get ready to have deeper interaction with your datasets.
+          This feature not only helps you explore your data but also <strong>aids you in making
+          informed decisions</strong> during machine learning workflow.
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature_icon"><i style="color: #0b6623;" class="fas fa-magnifying-glass-chart"></i></div>
+        <h3 class="feature_title">Project</h3>
+        <div style="font-size: 0.9rem; font-weight:500; text-align: justify;" class="feature_text">
+          The most exciting feature of all! You have now the <strong>chance to investigate the capabilities</strong>
+          of a particular machine-learning model to <strong>calculate the possible outcome</strong> of a specific event or matter.
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- about ends here -->
+
+  <!-- datasets starts here -->
+  <section id="datasets">
+    <div class="container">
+      <h2 style="max-width:520px;" class="section-header">Be the first to discover the first two datasets of ML models</h2>
+      <div class="datasets">
+        <div class="dataset">
+          <div class="dataset_img"><img src="{% static 'itd105_app/img/10.jpg' %}"></div>
+          <div class="dataset_content">
+            <h3 class="dataset_category">Classification</h3>
+            <h3 class="dataset_title">Wine Quality Dataset</h3>
+            <p class="dataset_text">
+              A notable collection in the realm of machine learning and data analysis; related to the red variants of the Portuguese
+              <span>"Vinho Verde"</span> wine, this dataset provides an intriguing glimpse into the complex world of oenology. One of
+              the primary applications of this dataset lies in predicting wine quality based on its chemical composition. Researchers
+              and data scientists employ various machine learning algorithms, regression, or classification techniques to develop models
+              capable of forecasting the wine's quality score. These predictive models contribute not only to the scientific understanding
+              of wine but also to practical applications in the wine industry, where quality assurance is paramount.
+            </p>
+            <div class="btn">
+              <a class="read" href="https://www.kaggle.com/datasets/yasserh/wine-quality-dataset" >Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="dataset">
+          <div class="dataset_img"><img src="{% static 'itd105_app/img/the-5-components-of-full-health-related-insurance-coverage_orig.jpg' %}"></div>
+          <div class="dataset_content">
+            <h3 class="dataset_category">Regression</h3>
+            <h3 class="dataset_title">Medical Cost Personal Dataset</h3>
+            <p class="dataset_text">
+              The Medical Cost Personal dataset of Brett Lantz stands as one of the relevant repositories of health-related information,
+              offering a glimpse into the intricate landscape of medical costs and personal attributes. With its rich and diverse data,
+              this dataset provides a treasure trove for researchers, healthcare professionals, and data scientists eager to understand
+              the <span> multifaceted factors</span> influencing medical expenses.
+            </p>
+            <br>
+            <p>
+              When working into its attributes, it offers a nuanced exploration
+              of the diverse factors influencing medical costs. Age and BMI shed light on the physiological aspects while smoking status
+              and region provide insights into lifestyle choices and geographic disparities in healthcare expenses. The number of children
+              becomes a factor influencing family dynamics and, subsequently, healthcare costs.
+            </p>
+            <div class="btn">
+              <a class="read" href="https://www.kaggle.com/datasets/mirichoi0218/insurance/data" >Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- datasets starts here -->
+
+  <!-- contact starts here -->
+  <section id="contact">
+    <div class="container flex-center flex-column">
+      <h5 class="section-subheader">give me a ring</h5>
+      <h2 style="max-width:950px; font-size: 2rem;" class="section-header text-center"> "Let's have a talk and will create a plan" </h2>
+
+      <div class="contacts text-center">
+        <div class="contact">
+          <div class="contact_img"><img src="{% static 'itd105_app/img/profile.jpg' %}"></div>
+          <h4 class="contact_info">
+            Sophia Jade Esclares<br>
+            <span>BSIT 4th Year Student</span>
+          </h4>
+          <h4 class="contact_educ"></h4>
+
+          <div class="social_menu text-center">
+            <ul>
+              <li><a href=""><i class="fa-brands fa-github"></i></a></li>
+              <li><a href=""><i class="fa-brands fa-facebook-f"></i></a></li>
+              <li><a href=""><i class="fa-brands fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- contact ends here -->
+
+  <!-- footer starts here -->
+  <footer>
+    <div class="container">
+      <div class="footer_content">
+        <div class="footer_details">
+          <div class="footer_logo"><a href="">sophia.</a></div>
+          <p class="footer_text">
+            Hello there! Thanks for stopping by.
+            Have a gentle week hooman.
+            See you around!
+          </p>
+        </div>
+
+        <div class="footer_menu">
+          <h3 class="footer_menu-title">Quick Links</h3>
+          <ul class="footer_menu-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#datasets">Datasets</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer_menu">
+          <h3 class="footer_menu-title">Dataset Links</h3>
+          <ul class="footer_menu-list">
+            <li><a href="">Wine Quality Dataset</a></li>
+            <li><a href="">Medical Cost Personal Dataset</a></li>
+          </ul>
+        </div>
+
+        <div class="footer_menu">
+          <h3 class="footer_menu-title">Social</h3>
+          <ul class="footer_menu-list">
+            <li><a href="">Github</a></li>
+            <li><a href="">Facebook</a></li>
+            <li><a href="">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom flex-center flex-column">
+      <p>&copy; 2023 sophia. All rights reserved.</p>
+    </div>
+  </footer>
+  <!-- footer ends here -->
+
+
+
+  <script src="{% static 'itd105_app/js/index.js' %}"></script>
+
+</body>
+</html>
