@@ -73,6 +73,10 @@ def wine(request):
     
     wine_bins = [3, 4, 5, 6, 7, 8]
     wine_lists = [wine1, wine2, wine3, wine4, wine5, wine6]
+    
+    
+    
+    
  
     context = {
         'wine_report': wine_report,
